@@ -1,21 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <html lang="en" data-theme="light">
+
 </html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/df8c0b69a9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Assingment_6</title>
 </head>
+
 <body>
+    <!-- nab-bar section start here  -->
+
     <head>
-        <nav>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, impedit, esse animi odit non, debitis aliquam laborum quos perspiciatis voluptatem sunt eius dolor provident doloremque numquam quaerat autem quas tempore.</p>
+        <nav class="flex items-center justify-between px-4 py-2">
+            <div class="flex justify-between">
+                <img src="images/logo.webp" alt="logo" class="w-8 h-8">
+                <p class="ml-8 text-2xl font-bold">paddy</p>
+            </div>
+
+            <div class="nav_bar">
+                <ul class="flex space-x-6">
+                    <li>Home</li>
+                    <li>Shop</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+
+            <div class="profile">
+                <img src="images/logo.webp" alt="profile" class="w-8 h-8">
+            </div>
         </nav>
+
+        <div class="nav_container">
+            <div class="flex flex-col justify-center items-center text-center space-y-4 mt-10">
+                <p>Bringing Families Together ❤️‍🔥</p>
+                <p class="text-4xl font-bold">Your Path to Adoption Starts Here</p>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                    looking <br>
+                    at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <button class="btn"> view More</button>
+                <img src="images/pet.webp" alt="">
+                <h3 class="text-4xl font-bold">Adopt Your Best Friend</h3>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a <br> page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a</p>
+            </div>
+        </div>
     </head>
-<script src="js/index.js"></script>
+    <!-- nab-bar section ends here  -->
+
+
+    <!-- 4 buttons section ends here  -->
+
+
+    
+    <div class="flex justify-center gap-10 mt-10">
+        <button class="btn rounded-md" id="dogsBtn"><i class="fa-solid fa-dog w-14"></i> <span class="text-xl font-semibold">Dogs</span></button>
+        <button class="btn rounded-md" id="catsBtn"><i class="fa-solid fa-cat w-14"></i> <span class="text-xl font-semibold">Cats</span></button>
+        <button class="btn rounded-md" id="rabbitsBtn"><i class="fa-solid fa-paw w-14"></i> <span class="text-xl font-semibold">Rabbits</span></button>
+        <button class="btn rounded-md" id="birdsBtn"><i class="fa-solid fa-dove w-14"></i> <span class="text-xl font-semibold">Birds</span></button>
+    </div>
+
+    <!-- Section to display fetched data -->
+    <div id="pets-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"></div>
+
+
+
+    <!-- 4 buttons section ends here  -->
+
+
+
+
+
+    <!-- Footer section start here  -->
+    <div class="footer mt-10 bg-black">
+        <footer class="footer bg-gray-900 text-white p-10">
+            <nav>
+                <div class="flex justify-between items-center mb-4">
+                    <img src="images/logo.webp" alt="logo" class="w-6 h-6 mt-1">
+                    <p class="ml-4 text-2xl mb-1 font-bold">Paddy</p>
+                </div>
+                <a class="link link-hover text-gray-400">Location: av. Washington 165, NY CA</a>
+                <a class="link link-hover text-gray-400">54003</a>
+                <a class="link link-hover text-gray-400">Phone: +31 85 964 47 25</a>
+                <a class="link link-hover text-gray-400">Email: info@yourdomain.com</a>
+                <a class="link link-hover text-gray-400">Opening hours: 9.00 AM - 5.00 PM</a>
+
+                <!-- Social Media Icons using Favicons -->
+                <div class="flex justify-center mt-4 space-x-4">
+                    <a href="#"><img src="https://www.google.com/s2/favicons?domain=facebook.com" alt="Facebook"
+                            class="w-6 h-6"></a>
+                    <a href="#"><img src="https://www.google.com/s2/favicons?domain=twitter.com" alt="Twitter"
+                            class="w-6 h-6"></a>
+                    <a href="#"><img src="https://www.google.com/s2/favicons?domain=instagram.com" alt="Instagram"
+                            class="w-6 h-6"></a>
+                    <a href="#"><img src="https://www.google.com/s2/favicons?domain=linkedin.com" alt="LinkedIn"
+                            class="w-6 h-6"></a>
+                </div>
+            </nav>
+
+            <nav>
+                <h6 class="footer-title text-white">Useful Links</h6>
+                <a class="link link-hover text-gray-400">Home</a>
+                <a class="link link-hover text-gray-400">About Us</a>
+                <a class="link link-hover text-gray-400">Animals</a>
+                <a class="link link-hover text-gray-400">Foundation</a>
+                <a class="link link-hover text-gray-400">Contact</a>
+            </nav>
+
+            <form>
+                <h6 class="footer-title text-white">Drop a Message</h6>
+                <fieldset class="form-control w-80">
+                    <input type="email" placeholder="Enter your email" class="input input-bordered w-full mb-4" />
+                    <button class="btn btn-primary w-full">Subscribe</button>
+                </fieldset>
+            </form>
+        </footer>
+    </div>
+    <!-- fotter section ends here  -->
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
