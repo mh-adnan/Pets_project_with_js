@@ -1,0 +1,67 @@
+
+const sortButton = document.getElementById('sorting');
+const BestDeal = document.getElementById('deal');
+
+
+const activeColor = 'rgb(14,122,129)';
+
+
+sortButton.addEventListener('click', () => {
+    if (sortButton.style.backgroundColor === activeColor) {
+        sortButton.style.backgroundColor = ''; 
+        sortButton.style.color = ''; 
+    } else {
+        sortButton.style.backgroundColor = activeColor; 
+        sortButton.style.color = 'white'; 
+        BestDeal.style.backgroundColor = ''; 
+        BestDeal.style.color = ''; 
+    }
+});
+
+
+BestDeal.addEventListener('click', () => {
+    if (BestDeal.style.backgroundColor === activeColor) {
+        BestDeal.style.backgroundColor = ''; 
+        BestDeal.style.color = ''; 
+    } else {
+        BestDeal.style.backgroundColor = activeColor;
+        BestDeal.style.color = 'white'; 
+        sortButton.style.backgroundColor = ''; 
+        sortButton.style.color = ''; 
+    }
+});
+
+
+// for four buttons 
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const categoryButtons = [
+        document.getElementById('dogsBtn'),
+        document.getElementById('catsBtn'),
+        document.getElementById('rabbitsBtn'),
+        document.getElementById('birdsBtn')
+    ];
+
+
+    function resetCategoryButtons() {
+        categoryButtons.forEach(button => {
+            button.style.backgroundColor = ''; 
+            button.style.color = ''; 
+        });
+    }
+
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            resetCategoryButtons(); 
+            button.style.backgroundColor = 'rgba(14,122,129)'; 
+            button.style.color = 'white'; 
+        });
+    });
+});
+
+
+
+
+

@@ -12,16 +12,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/df8c0b69a9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <title>Assingment_6</title>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
     <!-- nab-bar section start here  -->
 
     <head>
         <nav class="flex items-center justify-between px-4 py-2">
             <div class="flex justify-between">
-                <img src="images/logo.webp" alt="logo" class="w-8 h-8">
+                <img src="images/logo.webp" alt="logo" class="w-6 h-6 mt-2">
                 <p class="ml-8 text-2xl font-bold">paddy</p>
             </div>
 
@@ -34,21 +36,25 @@
             </div>
 
             <div class="profile">
-                <img src="images/logo.webp" alt="profile" class="w-8 h-8">
+                <i class="fa-solid fa-user"></i>
             </div>
         </nav>
 
         <div class="nav_container">
             <div class="flex flex-col justify-center items-center text-center space-y-4 mt-10">
-                <p>Bringing Families Together ❤️‍🔥</p>
+                <p class="text-[rgba(19,19,19,0.6)] bg-your_background_color text-xl">
+                    Bringing Families Together ❤️‍🔥
+                </p>
                 <p class="text-4xl font-bold">Your Path to Adoption Starts Here</p>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                <p class="text-[rgba(19,19,19,0.6)] font-bold">It is a long established fact that a reader will be
+                    distracted by the readable content of a page when
                     looking <br>
                     at its layout. The point of using Lorem Ipsum is that it has a.</p>
-                <button class="btn"> view More</button>
+                <button id="viewMore" class="btn">View More</button>
                 <img src="images/pet.webp" alt="">
                 <h3 class="text-4xl font-bold">Adopt Your Best Friend</h3>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a <br> page
+                <p class="text-[rgba(19,19,19,0.6)] font-bold">It is a long established fact that a reader will be
+                    distracted by the readable content of a <br> page
                     when looking at its layout. The point of using Lorem Ipsum is that it has a</p>
             </div>
         </div>
@@ -56,26 +62,102 @@
     <!-- nab-bar section ends here  -->
 
 
+    <!-- 4 buttons section start here  -->
+
+    <div class="flex justify-center gap-10 mt-10">
+        <button class="btn rounded-md" id="dogsBtn"><img src="images/dog.png" class="w-7">Dogs</button>
+        <button class="btn rounded-md" id="catsBtn"><img src="images/cat.png" class="w-7" alt="">Cats</button>
+        <button class="btn rounded-md" id="rabbitsBtn"><img src="images/rabbit.png" class="w-7" alt="">Rabbits</button>
+        <button class="btn rounded-md" id="birdsBtn"><img src="images/bird.png" class="w-7" alt=""> Birds</button>
+    </div>
     <!-- 4 buttons section ends here  -->
 
 
-    
-    <div class="flex justify-center gap-10 mt-10">
-        <button class="btn rounded-md" id="dogsBtn"><i class="fa-solid fa-dog w-14"></i> <span class="text-xl font-semibold">Dogs</span></button>
-        <button class="btn rounded-md" id="catsBtn"><i class="fa-solid fa-cat w-14"></i> <span class="text-xl font-semibold">Cats</span></button>
-        <button class="btn rounded-md" id="rabbitsBtn"><i class="fa-solid fa-paw w-14"></i> <span class="text-xl font-semibold">Rabbits</span></button>
-        <button class="btn rounded-md" id="birdsBtn"><i class="fa-solid fa-dove w-14"></i> <span class="text-xl font-semibold">Birds</span></button>
+    <!-- loading spinner  -->
+    <div id="loading-spinner" class="hidden flex justify-center items-center">
+        <span class="loading loading-dots loading-lg"></span>
     </div>
+    <!-- loading spinner ends -->
 
-    <!-- Section to display fetched data -->
+
+    <!-- extra two button start  -->
+    <div id="extra-two-btn" class="two-btn flex justify-between mb-5">
+        <button id="deal" class="btn ml-10">Best Deal For You</button>
+        <button id="sorting" class="btn mr-10">Sort By Price </button>
+    </div>
+    <!-- extra two button ends  -->
+
     <div id="pets-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"></div>
 
+    <!-- liked image section start  -->
+    <div class="animals">
+        <div class="flex justify-between items-star">
+            <div id="pets-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 flex-grow"></div>
+            <div id="liked-pets-images" class="flex flex-col gap-4 mt-8 sticky top-0 max-w-xs ml-6">
+                <h2 class="text-xl font-bold mb-2">Liked Pets</h2> <!-- Title for liked pets -->
+                <!-- Liked images will be appended here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- liked image section ends  -->
 
 
-    <!-- 4 buttons section ends here  -->
 
 
+    <!-- Adopt modal pop-up start -->
 
+
+    <!-- The button to open modal -->
+    <!-- <a href="#my_modal_8" class="btn">Open Modal</a> -->
+
+    <!-- Modal structure -->
+    <div class="modal hidden" role="dialog" id="my_modal_8">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">This modal works with anchor links</p>
+            <div class="modal-action">
+                <a href="#" class="btn close-modal-btn">Yay!</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adopt modal pop-up ends -->
+
+    <!-- Modal structure -->
+    <div id="adopt-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center;"
+        role="dialog">
+        <div
+            style="background-color: white; padding: 20px; border-radius: 8px; width: 300px; text-align: center; position: relative;">
+            <!-- 'X' button for closing -->
+            <button id="close-x"
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+
+            <h3 style="font-size: 18px; font-weight: bold;" id="modal-title">Adoption Successful</h3>
+            <p id="modal-text" style="padding: 10px 0;">Congratulations on adopting the pet!</p>
+
+            <!-- Countdown display -->
+            <p> <span id="countdown-timer" style="font-weight: bold;">3</span> </p>
+        </div>
+    </div>
+
+
+    <!-- Details modal structure -->
+    <div id="details-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center;"
+        role="dialog">
+        <div
+            style="background-color: white; padding: 20px; border-radius: 8px; width: 300px; text-align: center; position: relative;">
+            
+            <button id="close-x-details"
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+            <h3 style="font-size: 18px; font-weight: bold;">Pet Details</h3>
+            <p style="padding: 10px 0;">Details about the pet will be shown here!</p>
+            <p>Closing in <span id="countdown-timer-details" style="font-weight: bold;">3</span> seconds...</p>
+        </div>
+    </div>
+    <!-- Details modal structure ends -->
 
 
     <!-- Footer section start here  -->
@@ -126,6 +208,10 @@
     <!-- fotter section ends here  -->
 
     <script src="js/script.js"></script>
+    <script src="js/button-switiching"></script>
+    <script src="js/adopt.js"></script>
+    <script src="js/details.js"></script>
+
 </body>
 
 </html>
