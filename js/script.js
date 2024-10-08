@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const extraTwoBtn = document.getElementById('extra-two-btn');
     let allPets = [];
     const likedPets = []; 
-    
+
     async function fetchAllPets() {
         petsContainer.innerHTML = `<span class="loading loading-dots loading-lg"></span>`;
         try {
@@ -58,29 +58,30 @@ document.addEventListener("DOMContentLoaded", () => {
             return; 
         }
 
-        pets.forEach(pet => {
-            const petCard = document.createElement('div');
-            petCard.classList.add('bg-white', 'shadow-md', 'rounded-lg', 'p-4', 'text-left', 'border', 'border-gray-200'); 
+      pets.forEach(pet => {
+    const petCard = document.createElement('div');
+    petCard.classList.add('bg-white', 'shadow-md', 'rounded-lg', 'p-4', 'text-left', 'border', 'border-gray-200', 'flex', 'flex-col'); // Added 'flex' and 'flex-col' for mobile responsiveness
 
-            petCard.innerHTML = `
-            <img src="${pet.image}" alt="${pet.name || 'Pet Image'}" class="w-full h-40 object-cover rounded-lg mb-2">
-            <h2 class="text-xl font-bold mb-2">${pet.pet_name || 'nai'}</h2>
-            <p class="text-gray-600 mb-1"><i class="fa-solid fa-paw"></i> Breed: ${pet.breed || 'Not Available'}</p>
-            <p class="text-gray-500 mb-1"><i class="fa-solid fa-cake-candles"></i> Birth: ${pet.date_of_birth || 'Not Available'}</p>
-            <p class="text-gray-500 mb-1"><i class="fa-solid fa-venus-mars"></i> Gender: ${pet.gender || 'Not Available'}</p>
-            <p class="text-gray-500 mb-4"><i class="fa-solid fa-dollar-sign"></i> Price: $${pet.price || 'Not Available'}</p>
-            <div class="flex justify-between items-center">
-                <div class="flex gap-2">
-                    <button class="btn bg-red-500 text-white rounded-md px-4 py-2 like-btn" data-image="${pet.image}">
-                        <i class="fa-solid fa-heart"></i> Like
-                    </button>
-                    <button class="btn bg-green-500 text-white rounded-md px-4 py-2 adnan1" data-pet='${JSON.stringify(pet)}'>Adopt</button>
-                </div>
-                <button class="btn bg-blue-500 text-white rounded-md px-4 py-2 details-btn" data-pet='${JSON.stringify(pet)}'>Details</button>
+    petCard.innerHTML = `
+        <img src="${pet.image}" alt="${pet.name || 'Pet Image'}" class="w-full h-40 object-cover rounded-lg mb-2">
+        <h2 class="text-xl font-bold mb-2">${pet.pet_name || 'nai'}</h2>
+        <p class="text-gray-600 mb-1"><i class="fa-solid fa-paw"></i> Breed: ${pet.breed || 'Not Available'}</p>
+        <p class="text-gray-500 mb-1"><i class="fa-solid fa-cake-candles"></i> Birth: ${pet.date_of_birth || 'Not Available'}</p>
+        <p class="text-gray-500 mb-1"><i class="fa-solid fa-venus-mars"></i> Gender: ${pet.gender || 'Not Available'}</p>
+        <p class="text-gray-500 mb-4"><i class="fa-solid fa-dollar-sign"></i> Price: $${pet.price || 'Not Available'}</p>
+        <div class="flex flex-col sm:flex-row justify-between items-center"> <!-- Flex direction changes based on screen size -->
+            <div class="flex gap-2 mb-2 sm:mb-0"> <!-- Margin bottom for mobile -->
+                <button class="btn bg-red-500 text-white rounded-md px-4 py-2 like-btn" data-image="${pet.image}">
+                    <i class="fa-solid fa-heart"></i> Like
+                </button>
+                <button class="btn bg-green-500 text-white rounded-md px-4 py-2 adnan1" data-pet='${JSON.stringify(pet)}'>Adopt</button>
             </div>
-        `;
-            petsContainer.appendChild(petCard);
-        });
+            <button class="btn bg-blue-500 text-white rounded-md px-4 py-2 details-btn" data-pet='${JSON.stringify(pet)}'>Details</button>
+        </div>
+    `;
+    petsContainer.appendChild(petCard);
+});
+
 
         addLikeButtonListeners();
         addAdoptButtonListeners();
