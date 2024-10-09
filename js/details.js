@@ -6,19 +6,59 @@ document.addEventListener("DOMContentLoaded", () => {
  
     detailsModal.style.display = 'none';
 
-
-    function displayPets() {
-        const petCard = document.createElement('div');
-        petCard.classList.add('bg-white', 'shadow-md', 'rounded-lg', 'p-4', 'text-left', 'border', 'border-gray-200');
-
-        petCard.innerHTML = `
-            <h2 class="text-xl font-bold mb-2">Pet Name</h2>
-            <div class="flex justify-between items-center">
-                <button class="btn bg-blue-500 text-white rounded-md px-4 py-2 details-btn">Details</button>
-            </div>
+    function newDetails() {
+        fetch('https://openapi.programming-hero.com/api/peddy/pet/2')
+            .then(res => res.json())
+            .then(data => displayPets(data))
+            .catch(err => console.error('Error fetching pet data:', err));
+    }
+    
+    function displayPets(data) {
+        console.log(data.petData.pet_details);
+    
+        const dynamicContentDiv = document.getElementById('dynamic-pet-details');
+        const petData = data.petData;
+        
+        dynamicContentDiv.innerHTML = `
+        <img src="${petData.image}" alt="${petData.pet_name}" style="width: 100%; border-radius: 8px;">
+        <h3 style="font-size: 18px; font-weight: bold;">${petData.pet_name}</h3>
+        <h4 style="font-size: 16px;">
+            <span style="font-weight: bold;">Date of Birth:</span> ${petData.date_of_birth}
+        </h4>
+        <h4 style="font-size: 16px;">
+            <span style="font-weight: bold;">Breed:</span> ${petData.breed}
+        </h4>
+        <h4 style="font-size: 16px;">
+            <span style="font-weight: bold;">Age:</span> ${petData.age}
+        </h4>
+        <h4 style="font-size: 16px;">
+            <span style="font-weight: bold;">Gender:</span> ${petData.gender}
+        </h4>
+        <h4 style="font-size: 16px;">
+            <span style="font-weight: bold;">Price:</span> ${petData.price}
+        </h4>
+        <h4 style="font-size: 16px;">
+            <span style="font-weight: bold;">Vaccinated Status:</span> ${petData.vaccinated_status}
+        </h4>
+        <p><span style="font-weight: bold;">Description:</span> ${petData.pet_details}</p>
         `;
+    
+        detailsModal.style.display = 'flex';
+        disableScroll();
 
-        petsContainer.appendChild(petCard);
+
+        closeXDetailsBtn.onclick = function() {
+            detailsModal.style.display = 'none'; 
+            enableScroll(); 
+        };
+
+
+        detailsModal.onclick = function(e) {
+            if (e.target === detailsModal) {
+                detailsModal.style.display = 'none'; 
+                enableScroll(); 
+            }
+        };
     }
 
     function disableScroll() {
@@ -29,51 +69,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = '';
     }
 
-    function startCountdown() {
-        let timeLeft = 3; 
-        countdownDetailsElement.textContent = timeLeft;
-        countdownDetailsElement.style.color = '#FF4500'; 
-        const countdownInterval = setInterval(() => {
-            timeLeft--;
-            countdownDetailsElement.textContent = timeLeft;
-
-      
-            if (timeLeft === 2) {
-                countdownDetailsElement.style.color = '#FFA500'; 
-            } else if (timeLeft === 1) {
-                countdownDetailsElement.style.color = '#FFD700';
-            }
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval); 
-                detailsModal.style.display = 'none'; 
-                enableScroll(); 
-            }
-        }, 1000); 
-    }
+ 
 
     petsContainer.addEventListener('click', (e) => {
         const detailsBtn = e.target.closest('.details-btn'); 
         if (detailsBtn) {
             console.log('Details button clicked');
-
-            detailsModal.style.display = 'flex'; clicked
-            disableScroll(); 
-
-            startCountdown();
+            newDetails(); 
         }
     });
 
-    closeXDetailsBtn.addEventListener('click', () => {
-        detailsModal.style.display = 'none'; 
-        enableScroll(); 
-    });
-
-    detailsModal.addEventListener('click', (e) => {
-        if (e.target === detailsModal) {
-            detailsModal.style.display = 'none'; box
-            enableScroll(); 
-        }
-    });
-    displayPets();
+   
 });

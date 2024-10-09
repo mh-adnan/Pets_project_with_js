@@ -1,4 +1,5 @@
 #liked-pets-images {
+    overflow-x: hidden;
     max-width: 300px; 
     position: sticky;
     top: 20px; 
@@ -73,3 +74,32 @@
 }
 
 
+/* pefectoss */
+
+
+/* 
+@media (min-width: 640px) {
+    .animals {
+        display: hidden;
+        overflow-x: hidden;
+        flex-direction: row; /* Row layout for larger devices */
+        position: static; /* Reset position for larger devices */
+        height: auto; /* Remove fixed height for larger devices */
+    }
+}
+
+@media (max-width: 640px) {
+    #liked-pets-images {
+        display: hidden;
+        overflow-x: hidden;
+        position: fixed; /* Fixed position for small devices */
+        bottom: 0; /* Align to bottom */
+        left: 0; /* Align to left */
+        width: 100%; /* Full width on small devices */
+        margin: 0; /* Remove margins for full-width effect */
+    }
+
+    #pets-container {
+        margin-bottom: 80px; /* Space for liked pets section */
+    }
+} */

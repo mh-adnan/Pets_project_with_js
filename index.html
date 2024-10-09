@@ -17,7 +17,7 @@
     <title>Assingment_6</title>
 </head>
 
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden sm:overflow-x-hidden">
     <!-- nab-bar section start here  -->
 
     <head>
@@ -56,7 +56,7 @@
             </div>
         </nav>
 
-        <div class="nav_container">
+        <div class="nav_container overflow-x-hidden">
             <div class="flex flex-col justify-center items-center text-center space-y-4 mt-10">
                 <p class="text-[rgba(19,19,19,0.6)] bg-your_background_color text-xl md:text-2xl">
                     Bringing Families Together ❤️‍🔥
@@ -81,7 +81,7 @@
     <!-- nab-bar section ends here  -->
 
 <!-- 4 buttons section start here  -->
-<div class="flex flex-wrap justify-center gap-4 mt-10">
+<div class="flex flex-wrap justify-center gap-4 mt-10 overflow-x-hidden">
     <button class="btn rounded-md flex items-center space-x-2 w-full sm:w-1/2 md:w-auto" id="dogsBtn">
         <img src="images/dog.png" class="w-7" alt="Dogs">
         <span>Dogs</span>
@@ -126,18 +126,23 @@
 
     <div id="pets-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"></div>
 
-    <!-- liked image section start  -->
-    <div class="animals">
-        <div class="flex justify-between items-star">
-            <div id="pets-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 flex-grow"></div>
-            <div id="liked-pets-images" class="flex flex-col gap-4 mt-8 sticky top-0 max-w-xs ml-6">
-                <h2 class="text-xl font-bold mb-2">Liked Pets</h2> <!-- Title for liked pets -->
-                <!-- Liked images will be appended here -->
-            </div>
+<!-- liked image section start  -->
+
+
+<div class="animals overflow-x-hidden">
+    <div class="flex flex-col md:flex-row justify-between items-start">
+        <div id="pets-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8 flex-grow"></div>
+
+        <div id="liked-pets-images" class="flex flex-col gap-4 mt-8 sticky top-0 max-w-full sm:max-w-xs md:ml-6 fixed sm:bottom-0 sm:left-0 sm:w-full md:w-auto">
+            <h2 class="text-xl font-bold mb-2">Liked Pets</h2>
+            <!-- Liked images will be appended here -->
         </div>
     </div>
+</div>
 
-    <!-- liked image section ends  -->
+
+<!-- liked image section ends  -->
+
 
 
 
@@ -149,7 +154,7 @@
     <!-- <a href="#my_modal_8" class="btn">Open Modal</a> -->
 
     <!-- Modal structure -->
-    <div class="modal hidden" role="dialog" id="my_modal_8">
+    <div class="modal hidden overflow-x-hidden" role="dialog" id="my_modal_8">
         <div class="modal-box">
             <h3 class="text-lg font-bold">Hello!</h3>
             <p class="py-4">This modal works with anchor links</p>
@@ -162,7 +167,7 @@
     <!-- Adopt modal pop-up ends -->
 
     <!-- Modal structure -->
-    <div id="adopt-modal"
+    <div  id="adopt-modal" class="overflow-x-hidden"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center;"
         role="dialog">
         <div
@@ -181,19 +186,19 @@
 
 
     <!-- Details modal structure -->
-    <div id="details-modal"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center;"
-        role="dialog">
-        <div
-            style="background-color: white; padding: 20px; border-radius: 8px; width: 300px; text-align: center; position: relative;">
+  
 
-            <button id="close-x-details"
-                style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
-            <h3 style="font-size: 18px; font-weight: bold;">Pet Details</h3>
-            <p style="padding: 10px 0;">Details about the pet will be shown here!</p>
-            <p>Closing in <span id="countdown-timer-details" style="font-weight: bold;">3</span> seconds...</p>
+    <div id="details-modal" class="overflow-x-hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center" role="dialog">
+        <div id="modal-content" class="bg-white p-6 rounded-lg w-96 h-96 flex flex-col justify-between text-center relative">
+            <button id="close-x-details" onclick="document.getElementById('details-modal').style.display = 'none';" class="absolute top-2 right-2 bg-none border-none text-xl cursor-pointer">&times;</button>
+            <div id="dynamic-pet-details" class="flex-grow overflow-y-auto">
+            </div>
         </div>
     </div>
+    
+
+
+
     <!-- Details modal structure ends -->
 
 
@@ -247,5 +252,7 @@
     <script src="js/details.js"></script>
 
 </body>
+
+
 
 </html>
