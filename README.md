@@ -19,5 +19,5 @@ This project is a pet adoption application that connects potential pet owners wi
 - **Promises**: For handling asynchronous operations, such as API calls.
 
 ## Live Link
-You can view the live project [here](https:/d d/frabjous-horse-3796f4.netlify.app/).
+You can view the live project [here](https://frabjous-horse-3796f4.netlify.app/).
                                      
