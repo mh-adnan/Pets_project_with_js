@@ -5,13 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const countdownDetailsElement = document.getElementById('countdown-timer-details'); 
  
     detailsModal.style.display = 'none';
+    let petId = 1;
 
     function newDetails() {
-        fetch('https://openapi.programming-hero.com/api/peddy/pet/2')
+        fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)  
             .then(res => res.json())
-            .then(data => displayPets(data))
+            .then(data => {
+                displayPets(data);  
+                petId++;  
+            })
             .catch(err => console.error('Error fetching pet data:', err));
     }
+    
     
     function displayPets(data) {
         console.log(data.petData.pet_details);

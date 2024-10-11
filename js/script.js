@@ -51,41 +51,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (pets.length === 0) {
             petsContainer.innerHTML = `
-                <div class="flex justify-center items-center h-full">
-                    <img src="images/error.webp" alt="No pets found" class="w-1/2 md:w-1/3 lg:w-1/4 h-auto object-contain">
-                </div>
+<div class="flex justify-center items-center h-full">
+    <img src="images/error.webp" alt="No pets found" class="w-2/4">
+
+</div>
+ <p class="text-black text-lg font-semibold text-justify">
+    Nothing's found 
+    Please check back later or explore other options.<br>
+    If you need assistance, feel free to contact support.
+</p>
+
             `;
             return; 
         }
 
         pets.forEach(pet => {
             const petCard = document.createElement('div');
-            petCard.classList.add('bg-white', 'shadow-md', 'rounded-lg', 'p-4', 'text-left', 'border', 'border-gray-200', 'flex', 'flex-col', 'mb-4'); // Added margin-bottom for spacing
-
+            petCard.classList.add('bg-white', 'shadow-md', 'rounded-lg', 'p-4', 'text-left', 'border', 'border-gray-200', 'flex', 'flex-col', 'mb-4');
+        
             petCard.innerHTML = `
-            <!-- Image section -->
-          <img src="${pet.image}" alt="${pet.name || 'Pet Image'}" class="w-full h-auto sm:w-full md:h-56 rounded-lg mb-2">
+                <!-- Image section -->
+  <img src="${pet.image}" alt="${pet.name || 'Pet Image'}" class="w-full h-auto sm:h-90 lg:h-56 rounded-lg mb-2 object-cover border-red-300 2pxl solid">
 
-            
-            <!-- Pet details -->
-            <h2 class="text-xl font-bold mb-2">${pet.pet_name || 'nai'}</h2>
-            <p class="text-gray-600 mb-1"><i class="fa-solid fa-paw"></i> Breed: ${pet.breed || 'Not Available'}</p>
-            <p class="text-gray-500 mb-1"><i class="fa-solid fa-cake-candles"></i> Birth: ${pet.date_of_birth || 'Not Available'}</p>
-            <p class="text-gray-500 mb-1"><i class="fa-solid fa-venus-mars"></i> Gender: ${pet.gender || 'Not Available'}</p>
-            <p class="text-gray-500 mb-4"><i class="fa-solid fa-dollar-sign"></i> Price: ${pet.price || 'Not Available'}</p>
-
-            <!-- Buttons layout (responsive for small and large devices) -->
-            <div class="flex flex-col sm:flex-row justify-between space-y-2 sm:space-y-0 sm:space-x-2">
-                <button class="btn bg-red-500 text-white rounded-md px-4 py-2 like-btn" data-image="${pet.image}">
-                    <i class="fa-solid fa-heart"></i> Like
-                </button>
-                <button class="btn bg-green-500 text-white rounded-md px-4 py-2 adnan1" data-pet='${JSON.stringify(pet)}'>Adopt</button>
-                <button class="btn bg-blue-500 text-white rounded-md px-4 py-2 details-btn" data-pet='${JSON.stringify(pet)}'>Details</button>
-            </div>
+               
+        
+                <!-- Pet details -->
+                <h2 class="text-lg sm:text-xl font-bold mb-2">${pet.pet_name || 'nai'}</h2>
+                <h2 class="text-lg sm:text-xl font-bold mb-2">${pet.petId || 'nai'}</h2>
+                <p class="text-gray-600 mb-1"><i class="fa-solid fa-paw"></i> Breed: ${pet.breed || 'Not Available'}</p>
+                <p class="text-gray-500 mb-1"><i class="fa-solid fa-cake-candles"></i> Birth: ${pet.date_of_birth || 'Not Available'}</p>
+                <p class="text-gray-500 mb-1"><i class="fa-solid fa-venus-mars"></i> Gender: ${pet.gender || 'Not Available'}</p>
+                <p class="text-gray-500 mb-4"><i class="fa-solid fa-dollar-sign"></i> Price: $${pet.price || 'Not Available'}</p>
+        
+                <!-- Buttons layout (responsive for small and large devices) -->
+                <div class="flex flex-col sm:flex-row justify-between space-y-2 sm:space-y-0 sm:space-x-2">
+                    <button class="btn bg-red-500 text-white rounded-md px-4 py-2 like-btn" data-image="${pet.image}">
+                        <i class="fa-solid fa-heart"></i> Like
+                    </button>
+                    <button class="btn bg-green-500 text-white rounded-md px-4 py-2 adnan1" data-pet='${JSON.stringify(pet)}'>Adopt</button>
+                    <button class="btn bg-blue-500 text-white rounded-md px-4 py-2 details-btn" data-pet='${JSON.stringify(pet)}'>Details</button>
+                </div>
             `;
-
+        
             petsContainer.appendChild(petCard);
         });
+        
 
         addLikeButtonListeners();
         addAdoptButtonListeners();
