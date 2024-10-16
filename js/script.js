@@ -100,6 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
         addLikeButtonListeners();
         addAdoptButtonListeners();
         addDetailsButtonListeners();
+
+        // my code 
     }
 
     function addLikeButtonListeners() {
